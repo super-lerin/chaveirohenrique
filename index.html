@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Henrique Chaves | Chaveiro 24h - Cópia, Abertura e Conserto</title>
+<meta name="description" content="Henrique Chaves - Chaveiro profissional. Cópia de chaves, abertura de carros, conserto de fechaduras e capas de chave. Atendimento rápido.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --blue-900:#0a1f44;
+    --blue-800:#0e2a5e;
+    --blue-700:#123a7e;
+    --blue-600:#1a4fa0;
+    --cyan-500:#00b4d8;
+    --cyan-400:#48cae4;
+    --cyan-300:#90e0ef;
+    --yellow-400:#ffd60a;
+    --yellow-500:#ffc300;
+    --orange-500:#ff6d00;
+    --orange-600:#e85d04;
+    --white:#ffffff;
+    --gray-50:#f8fafc;
+    --gray-100:#f1f5f9;
+    --gray-200:#e2e8f0;
+    --gray-600:#475569;
+    --gray-700:#334155;
+    --gray-900:#0f172a;
+    --radius:18px;
+    --shadow-sm:0 4px 12px rgba(10,31,68,.08);
+    --shadow-md:0 12px 32px rgba(10,31,68,.12);
+    --shadow-lg:0 24px 60px rgba(10,31,68,.18);
+    --shadow-glow:0 0 40px rgba(0,180,216,.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--gray-900);
+    background:var(--white);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;line-height:1.15;letter-spacing:-.02em}
+  img,svg{max-width:100%;display:block}
+  a{text-decoration:none;color:inherit}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+  /* NAVBAR */
+  .navbar{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    background:rgba(10,31,68,.85);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    transition:all .3s ease;
+  }
+  .navbar.scrolled{background:rgba(10,31,68,.97);box-shadow:var(--shadow-md)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .logo{display:flex;align-items:center;gap:12px;color:#fff;font-weight:800;font-size:1.25rem}
+  .logo-mark{
+    width:46px;height:46px;border-radius:12px;
+    background:linear-gradient(135deg,var(--yellow-400),var(--orange-500));
+    display:grid;place-items:center;
+    box-shadow:0 6px 20px rgba(255,195,0,.4);
+    font-family:'Space Grotesk';font-weight:900;color:var(--blue-900);
+    font-size:1.1rem;
+  }
+  .logo-text span{color:var(--cyan-400)}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{color:rgba(255,255,255,.85);font-weight:500;font-size:.95rem;transition:color .2s}
+  .nav-links a:hover{color:var(--yellow-400)}
+  .nav-cta{
+    background:linear-gradient(135deg,var(--yellow-400),var(--orange-500));
+    color:var(--blue-900)!important;
+    padding:10px 22px;border-radius:999px;
+    font-weight:700!important;
+    box-shadow:0 6px 20px rgba(255,195,0,.35);
+    transition:transform .2s;
+  }
+  .nav-cta:hover{transform:translateY(-2px)}
+  .menu-toggle{display:none;color:#fff;font-size:1.5rem;background:none;border:none}
+  @media(max-width:900px){
+    .nav-links{
+      position:fixed;top:76px;right:0;bottom:0;width:280px;
+      background:var(--blue-900);
+      flex-direction:column;align-items:flex-start;
+      padding:32px 24px;gap:20px;
+      transform:translateX(100%);transition:transform .3s ease;
+      border-left:1px solid rgba(255,255,255,.08);
+    }
+    .nav-links.open{transform:translateX(0)}
+    .menu-toggle{display:block}
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;min-height:100vh;
+    background:
+      radial-gradient(circle at 20% 20%,rgba(0,180,216,.25),transparent 50%),
+      radial-gradient(circle at 80% 80%,rgba(255,109,0,.18),transparent 50%),
+      linear-gradient(135deg,var(--blue-900) 0%,var(--blue-700) 50%,var(--blue-600) 100%);
+    display:flex;align-items:center;
+    overflow:hidden;padding:120px 0 80px;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background-image:
+      radial-gradient(circle at 1px 1px,rgba(255,255,255,.12) 1px,transparent 0);
+    background-size:40px 40px;
+    opacity:.5;
+  }
+  .hero-grid{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;
+  }
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(0,180,216,.15);
+    border:1px solid rgba(0,180,216,.3);
+    color:var(--cyan-300);
+    padding:8px 18px;border-radius:999px;
+    font-size:.85rem;font-weight:600;
+    margin-bottom:24px;
+  }
+  .badge .dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .hero h1{
+    color:#fff;font-size:clamp(2.2rem,5vw,4rem);
+    font-weight:800;margin-bottom:20px;
+  }
+  .hero h1 .accent{
+    background:linear-gradient(135deg,var(--yellow-400),var(--orange-500));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p{
+    color:rgba(255,255,255,.8);font-size:1.15rem;
+    max-width:540px;margin-bottom:36px;
+  }
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:48px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 32px;border-radius:999px;
+    font-weight:700;font-size:1rem;
+    transition:all .25s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+    color:#fff;
+    box-shadow:0 12px 30px rgba(34,197,94,.4);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(34,197,94,.5)}
+  .btn-secondary{
+    background:rgba(255,255,255,.08);
+    color:#fff;border:1px solid rgba(255,255,255,.2);
+    backdrop-filter:blur(10px);
+  }
+  .btn-secondary:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.4)}
+  .hero-stats{display:flex;gap:40px;flex-wrap:wrap}
+  .stat{color:#fff}
+  .stat-num{font-family:'Space Grotesk';font-size:2rem;font-weight:800;color:var(--yellow-400)}
+  .stat-label{font-size:.85rem;color:rgba(255,255,255,.65);margin-top:2px}
+
+  /* MASCOTE */
+  .hero-visual{position:relative;display:grid;place-items:center}
+  .mascot-wrap{
+    position:relative;width:100%;max-width:480px;aspect-ratio:1;
+    animation:float 6s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+  .mascot-glow{
+    position:absolute;inset:10%;
+    background:radial-gradient(circle,var(--cyan-500),transparent 70%);
+    filter:blur(40px);opacity:.5;
+  }
+  .mascot-svg{position:relative;z-index:2;width:100%;height:100%;filter:drop-shadow(0 20px 40px rgba(0,0,0,.3))}
+
+  /* Floating keys */
+  .float-key{
+    position:absolute;
+    animation:floatKey 8s ease-in-out infinite;
+    filter:drop-shadow(0 8px 16px rgba(0,0,0,.25));
+  }
+  .float-key:nth-child(2){top:8%;left:5%;animation-delay:-1s}
+  .float-key:nth-child(3){top:20%;right:2%;animation-delay:-3s}
+  .float-key:nth-child(4){bottom:15%;left:8%;animation-delay:-5s}
+  .float-key:nth-child(5){bottom:25%;right:5%;animation-delay:-2s}
+  @keyframes floatKey{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(0,-20px) rotate(15deg)}}
+
+  /* SECTIONS */
+  section{padding:100px 0;position:relative}
+  .section-head{text-align:center;max-width:680px;margin:0 auto 64px}
+  .section-tag{
+    display:inline-block;color:var(--cyan-500);
+    font-weight:700;font-size:.85rem;letter-spacing:.1em;
+    text-transform:uppercase;margin-bottom:12px;
+  }
+  .section-head h2{
+    font-size:clamp(2rem,4vw,3rem);
+    color:var(--gray-900);margin-bottom:16px;
+  }
+  .section-head p{color:var(--gray-600);font-size:1.1rem}
+
+  /* SERVICES */
+  .services{background:var(--gray-50)}
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+  .service-card{
+    background:#fff;border-radius:var(--radius);
+    padding:36px 28px;
+    border:1px solid var(--gray-200);
+    transition:all .3s ease;
+    position:relative;overflow:hidden;
+  }
+  .service-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,var(--cyan-500),var(--yellow-400));
+    transform:scaleX(0);transform-origin:left;transition:transform .4s ease;
+  }
+  .service-card:hover{
+    transform:translateY(-8px);
+    box-shadow:var(--shadow-lg);
+    border-color:transparent;
+  }
+  .service-card:hover::before{transform:scaleX(1)}
+  .service-icon{
+    width:64px;height:64px;border-radius:16px;
+    background:linear-gradient(135deg,var(--blue-900),var(--blue-700));
+    display:grid;place-items:center;
+    color:var(--yellow-400);font-size:1.6rem;
+    margin-bottom:24px;
+    box-shadow:0 10px 24px rgba(10,31,68,.2);
+  }
+  .service-card h3{font-size:1.35rem;margin-bottom:10px;color:var(--gray-900)}
+  .service-card p{color:var(--gray-600);font-size:.95rem;margin-bottom:18px}
+  .service-link{
+    color:var(--cyan-500);font-weight:600;font-size:.9rem;
+    display:inline-flex;align-items:center;gap:6px;
+    transition:gap .2s;
+  }
+  .service-link:hover{gap:10px}
+
+  /* WHY US */
+  .why{background:linear-gradient(135deg,var(--blue-900),var(--blue-700));color:#fff;overflow:hidden}
+  .why::before{
+    content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;
+    background:radial-gradient(circle,rgba(0,180,216,.2),transparent 70%);
+    border-radius:50%;
+  }
+  .why .section-head h2{color:#fff}
+  .why .section-head p{color:rgba(255,255,255,.75)}
+  .why-grid{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;
+  }
+  .why-card{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:var(--radius);
+    padding:32px 28px;
+    backdrop-filter:blur(10px);
+    transition:all .3s ease;
+  }
+  .why-card:hover{background:rgba(255,255,255,.1);transform:translateY(-6px)}
+  .why-icon{
+    width:56px;height:56px;border-radius:14px;
+    background:linear-gradient(135deg,var(--yellow-400),var(--orange-500));
+    display:grid;place-items:center;
+    color:var(--blue-900);font-size:1.4rem;
+    margin-bottom:20px;
+  }
+  .why-card h3{font-size:1.2rem;margin-bottom:8px}
+  .why-card p{color:rgba(255,255,255,.7);font-size:.95rem}
+
+  /* PROCESS */
+  .process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;counter-reset:step}
+  .process-card{
+    background:#fff;border-radius:var(--radius);
+    padding:36px 28px;border:1px solid var(--gray-200);
+    position:relative;counter-increment:step;
+  }
+  .process-card::before{
+    content:counter(step,decimal-leading-zero);
+    position:absolute;top:-20px;right:24px;
+    font-family:'Space Grotesk';font-size:3rem;font-weight:900;
+    color:var(--gray-100);line-height:1;
+  }
+  .process-card h3{font-size:1.15rem;margin-bottom:8px;color:var(--gray-900)}
+  .process-card p{color:var(--gray-600);font-size:.92rem}
+
+  /* TESTIMONIALS */
+  .testimonials{background:var(--gray-50)}
+  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+  .testi-card{
+    background:#fff;border-radius:var(--radius);
+    padding:32px 28px;border:1px solid var(--gray-200);
+    transition:all .3s ease;
+  }
+  .testi-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+  .stars{color:var(--yellow-500);margin-bottom:16px;font-size:.95rem}
+  .testi-card p{color:var(--gray-700);font-size:.95rem;margin-bottom:20px;font-style:italic}
+  .testi-author{display:flex;align-items:center;gap:12px}
+  .testi-avatar{
+    width:44px;height:44px;border-radius:50%;
+    background:linear-gradient(135deg,var(--cyan-500),var(--blue-600));
+    display:grid;place-items:center;color:#fff;font-weight:700;
+  }
+  .testi-name{font-weight:700;color:var(--gray-900);font-size:.95rem}
+  .testi-role{font-size:.8rem;color:var(--gray-600)}
+
+  /* CTA */
+  .cta-section{
+    background:linear-gradient(135deg,var(--cyan-500),var(--blue-600));
+    color:#fff;text-align:center;
+    padding:80px 24px;
+    position:relative;overflow:hidden;
+  }
+  .cta-section::before{
+    content:'';position:absolute;inset:0;
+    background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.15) 1px,transparent 0);
+    background-size:30px 30px;
+  }
+  .cta-inner{position:relative;z-index:2;max-width:720px;margin:0 auto}
+  .cta-section h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:16px}
+  .cta-section p{font-size:1.15rem;opacity:.9;margin-bottom:36px}
+  .cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .btn-white{background:#fff;color:var(--blue-900);box-shadow:0 12px 30px rgba(0,0,0,.2)}
+  .btn-white:hover{transform:translateY(-3px)}
+  .btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4)}
+  .btn-outline:hover{background:rgba(255,255,255,.15)}
+
+  /* FOOTER */
+  footer{background:var(--blue-900);color:rgba(255,255,255,.75);padding:64px 0 24px}
+  .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+  @media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
+  @media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+  .footer-col h4{color:#fff;font-size:1rem;margin-bottom:20px;font-family:'Inter';font-weight:700}
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .footer-col a{font-size:.92rem;transition:color .2s}
+  .footer-col a:hover{color:var(--yellow-400)}
+  .footer-col .contact-item{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:.92rem}
+  .footer-col .contact-item i{color:var(--yellow-400);width:18px}
+  .footer-brand p{font-size:.9rem;margin:16px 0 20px;max-width:320px}
+  .socials{display:flex;gap:12px}
+  .socials a{
+    width:38px;height:38px;border-radius:10px;
+    background:rgba(255,255,255,.08);
+    display:grid;place-items:center;
+    transition:all .2s;
+  }
+  .socials a:hover{background:var(--yellow-400);color:var(--blue-900);transform:translateY(-3px)}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.08);
+    padding-top:24px;text-align:center;font-size:.85rem;
+  }
+
+  /* WHATSAPP FLOAT */
+  .wa-float{
+    position:fixed;bottom:24px;right:24px;z-index:999;
+    width:60px;height:60px;border-radius:50%;
+    background:linear-gradient(135deg,#25d366,#128c7e);
+    display:grid;place-items:center;
+    color:#fff;font-size:1.8rem;
+    box-shadow:0 12px 30px rgba(37,211,102,.5);
+    animation:waPulse 2s infinite;
+    transition:transform .2s;
+  }
+  .wa-float:hover{transform:scale(1.1)}
+  @keyframes waPulse{
+    0%,100%{box-shadow:0 12px 30px rgba(37,211,102,.5),0 0 0 0 rgba(37,211,102,.6)}
+    50%{box-shadow:0 12px 30px rgba(37,211,102,.5),0 0 0 18px rgba(37,211,102,0)}
+  }
+
+  /* REVEAL */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* RESPONSIVE */
+  @media(max-width:768px){
+    section{padding:72px 0}
+    .hero{padding:110px 0 60px}
+    .hero-stats{gap:24px}
+    .stat-num{font-size:1.6rem}
+    .mascot-wrap{max-width:340px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">HC</div>
+      <div class="logo-text">Henrique <span>Chaves</span></div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#servicos">Serviços</a>
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#processo">Como funciona</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato" class="nav-cta"><i class="fab fa-whatsapp"></i> (99) 99547-4007</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="badge"><span class="dot"></span> Atendimento 24 horas</div>
+      <h1>Sua chave em <span class="accent">boas mãos</span> com quem entende do assunto</h1>
+      <p>Cópia de chaves, abertura de veículos, conserto de fechaduras e muito mais. Serviço rápido, profissional e com preço justo — direto do especialista.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/5521995474007" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Chamar no WhatsApp</a>
+        <a href="#servicos" class="btn btn-secondary">Ver serviços <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num" data-count="15">0</div><div class="stat-label">Anos de experiência</div></div>
+        <div class="stat"><div class="stat-num" data-count="5000">0</div><div class="stat-label">Clientes atendidos</div></div>
+        <div class="stat"><div class="stat-num" data-count="24">0</div><div class="stat-label">Horas disponível</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="mascot-wrap">
+        <div class="mascot-glow"></div>
+        <!-- Floating keys -->
+        <svg class="float-key" width="70" height="70" viewBox="0 0 100 100"><g><path d="M20 50 Q20 30 40 30 L60 30 Q75 30 75 45 Q75 55 65 55 L50 55 L50 70 L40 70 L40 55 L30 55 Q20 55 20 50 Z" fill="#ffd60a" stroke="#0a1f44" stroke-width="3"/><circle cx="65" cy="45" r="5" fill="#0a1f44"/></g></svg>
+        <svg class="float-key" width="60" height="60" viewBox="0 0 100 100"><g><path d="M20 50 Q20 30 40 30 L60 30 Q75 30 75 45 Q75 55 65 55 L50 55 L50 70 L40 70 L40 55 L30 55 Q20 55 20 50 Z" fill="#48cae4" stroke="#0a1f44" stroke-width="3"/><circle cx="65" cy="45" r="5" fill="#0a1f44"/></g></svg>
+        <svg class="float-key" width="55" height="55" viewBox="0 0 100 100"><g><path d="M20 50 Q20 30 40 30 L60 30 Q75 30 75 45 Q75 55 65 55 L50 55 L50 70 L40 70 L40 55 L30 55 Q20 55 20 50 Z" fill="#ff6d00" stroke="#0a1f44" stroke-width="3"/><circle cx="65" cy="45" r="5" fill="#0a1f44"/></g></svg>
+        <svg class="float-key" width="65" height="65" viewBox="0 0 100 100"><g><path d="M20 50 Q20 30 40 30 L60 30 Q75 30 75 45 Q75 55 65 55 L50 55 L50 70 L40 70 L40 55 L30 55 Q20 55 20 50 Z" fill="#fff" stroke="#0a1f44" stroke-width="3"/><circle cx="65" cy="45" r="5" fill="#0a1f44"/></g></svg>
+
+        <!-- Mascote SVG -->
+        <svg class="mascot-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <!-- Corpo chave dourada -->
+          <g transform="translate(200,220) rotate(-15)">
+            <!-- Cabeça da chave -->
+            <circle cx="0" cy="0" r="90" fill="url(#keyGrad)" stroke="#0a1f44" stroke-width="5"/>
+            <circle cx="0" cy="0" r="55" fill="#0a1f44"/>
+            <circle cx="0" cy="0" r="45" fill="url(#keyGrad)"/>
+            <!-- Haste -->
+            <rect x="-25" y="80" width="50" height="120" rx="8" fill="url(#keyGrad)" stroke="#0a1f44" stroke-width="5"/>
+            <!-- Dentes -->
+            <rect x="25" y="110" width="30" height="20" rx="4" fill="url(#keyGrad)" stroke="#0a1f44" stroke-width="4"/>
+            <rect x="25" y="150" width="30" height="20" rx="4" fill="url(#keyGrad)" stroke="#0a1f44" stroke-width="4"/>
+            <rect x="25" y="190" width="25" height="20" rx="4" fill="url(#keyGrad)" stroke="#0a1f44" stroke-width="4"/>
+          </g>
+
+          <!-- Rosto -->
+          <g transform="translate(200,180)">
+            <!-- Olhos -->
+            <ellipse cx="-28" cy="-10" rx="18" ry="22" fill="#fff" stroke="#0a1f44" stroke-width="3"/>
+            <ellipse cx="28" cy="-10" rx="18" ry="22" fill="#fff" stroke="#0a1f44" stroke-width="3"/>
+            <circle cx="-24" cy="-8" r="9" fill="#0a1f44"/>
+            <circle cx="32" cy="-8" r="9" fill="#0a1f44"/>
+            <circle cx="-21" cy="-11" r="3" fill="#fff"/>
+            <circle cx="35" cy="-11" r="3" fill="#fff"/>
+            <!-- Sobrancelhas -->
+            <path d="M-45 -35 Q-28 -45 -10 -32" stroke="#0a1f44" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <path d="M10 -32 Q28 -45 45 -35" stroke="#0a1f44" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <!-- Sorriso -->
+            <path d="M-30 25 Q0 50 30 25" stroke="#0a1f44" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <path d="M-25 28 Q0 42 25 28 Z" fill="#e85d04"/>
+            <!-- Bochechas -->
+            <circle cx="-45" cy="15" r="8" fill="#ff9e9e" opacity=".6"/>
+            <circle cx="45" cy="15" r="8" fill="#ff9e9e" opacity=".6"/>
+          </g>
+
+          <!-- Boné verde HC -->
+          <g transform="translate(200,130)">
+            <path d="M-70 10 Q-70 -30 0 -35 Q70 -30 70 10 L70 20 L-70 20 Z" fill="#2d6a4f" stroke="#0a1f44" stroke-width="4"/>
+            <rect x="-80" y="15" width="160" height="18" rx="9" fill="#1b4332" stroke="#0a1f44" stroke-width="4"/>
+            <text x="0" y="-5" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="900" font-size="30" fill="#ffd60a" stroke="#0a1f44" stroke-width="2">HC</text>
+          </g>
+
+          <!-- Braços -->
+          <g>
+            <!-- Braço esquerdo (polegar pra cima) -->
+            <path d="M130 220 Q90 260 110 310" stroke="#ffd60a" stroke-width="28" fill="none" stroke-linecap="round"/>
+            <circle cx="110" cy="310" r="22" fill="#fff" stroke="#0a1f44" stroke-width="4"/>
+            <path d="M100 300 L100 285 Q100 278 107 278 L120 278 Q127 278 127 285 L127 300" fill="#fff" stroke="#0a1f44" stroke-width="3"/>
+            <!-- Polegar pra cima -->
+            <rect x="108" y="265" width="12" height="20" rx="6" fill="#fff" stroke="#0a1f44" stroke-width="3"/>
+          </g>
+          <g>
+            <!-- Braço direito (apontando) -->
+            <path d="M270 220 Q310 260 290 310" stroke="#ffd60a" stroke-width="28" fill="none" stroke-linecap="round"/>
+            <circle cx="290" cy="310" r="22" fill="#fff" stroke="#0a1f44" stroke-width="4"/>
+            <rect x="285" y="320" width="12" height="25" rx="6" fill="#fff" stroke="#0a1f44" stroke-width="3"/>
+          </g>
+
+          <defs>
+            <linearGradient id="keyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffd60a"/>
+              <stop offset="100%" stop-color="#ff9500"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SERVICES -->
+<section class="services" id="servicos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">Nossos Serviços</span>
+      <h2>Soluções completas em chaveiro</h2>
+      <p>Do simples ao complexo, atendemos todas as suas necessidades com agilidade e qualidade garantida.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-key"></i></div>
+        <h3>Cópia de Chaves</h3>
+        <p>Duplicação precisa de chaves residenciais, comerciais e automotivas com tecnologia de ponta.</p>
+        <a href="#contato" class="service-link">Solicitar orçamento <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-car"></i></div>
+        <h3>Abertura de Carros</h3>
+        <p>Trancou as chaves dentro do veículo? Abrimos seu carro sem danos, 24 horas por dia.</p>
+        <a href="#contato" class="service-link">Chamar agora <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-tools"></i></div>
+        <h3>Conserto de Fechaduras</h3>
+        <p>Manutenção e reparo de fechaduras residenciais e comerciais com peças de qualidade.</p>
+        <a href="#contato" class="service-link">Agendar serviço <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Capas de Chave</h3>
+        <p>Capas protetoras e personalizadas para chaves automotivas, com diversos modelos e cores.</p>
+        <a href="#contato" class="service-link">Ver modelos <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-lock"></i></div>
+        <h3>Troca de Segredo</h3>
+        <p>Substituição do segredo da fechadura mantendo o mesmo corpo. Rápido e econômico.</p>
+        <a href="#contato" class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Atendimento Emergencial</h3>
+        <p>Emergências não avisam. Estamos prontos para te atender a qualquer hora do dia ou da noite.</p>
+        <a href="#contato" class="service-link">Ligar agora <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="diferenciais">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag" style="color:var(--yellow-400)">Por que escolher</span>
+      <h2>Experiência que faz a diferença</h2>
+      <p>Mais de 15 anos transformando problemas em soluções rápidas para nossos clientes.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fas fa-clock"></i></div>
+        <h3>Atendimento 24h</h3>
+        <p>Disponível todos os dias, inclusive finais de semana e feriados.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Chegada Rápida</h3>
+        <p>Tempo médio de chegada de 20 a 40 minutos na região.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fas fa-award"></i></div>
+        <h3>Profissional Qualificado</h3>
+        <p>Técnico especializado com anos de experiência no segmento.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fas fa-hand-holding-usd"></i></div>
+        <h3>Preço Justo</h3>
+        <p>Orçamento transparente, sem surpresas. Melhor custo-benefício.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="processo">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">Como funciona</span>
+      <h2>Em 4 passos simples</h2>
+      <p>Processo descomplicado para você resolver seu problema com chaveiro de forma rápida.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-card reveal">
+        <h3>Entre em contato</h3>
+        <p>Ligue ou mande mensagem no WhatsApp informando seu problema.</p>
+      </div>
+      <div class="process-card reveal">
+        <h3>Receba o orçamento</h3>
+        <p>Enviamos o valor estimado de forma clara e sem compromisso.</p>
+      </div>
+      <div class="process-card reveal">
+        <h3>Atendimento no local</h3>
+        <p>Nosso técnico vai até você com todas as ferramentas necessárias.</p>
+      </div>
+      <div class="process-card reveal">
+        <h3>Problema resolvido</h3>
+        <p>Serviço executado com garantia e pagamento facilitado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="depoimentos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">Depoimentos</span>
+      <h2>O que nossos clientes dizem</h2>
+      <p>Histórias reais de quem já foi atendido pelo Henrique Chaves.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"Tranquei as chaves dentro do carro às 23h e o Henrique chegou em menos de 30 minutos. Serviço impecável, super recomendo!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MR</div>
+          <div><div class="testi-name">Marcos Ribeiro</div><div class="testi-role">Cliente há 3 anos</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"Fiz cópia de todas as chaves da minha casa. Preço justo, atendimento excelente e as chaves funcionam perfeitamente."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AS</div>
+          <div><div class="testi-name">Ana Silva</div><div class="testi-role">Cliente desde 2021</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"Profissional de confiança. Já chamei várias vezes para conserto de fechadura e sempre resolveu na hora. Nota 10!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">PL</div>
+          <div><div class="testi-name">Paulo Lima</div><div class="testi-role">Cliente fiel</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contato">
+  <div class="cta-inner reveal">
+    <h2>Precisa de um chaveiro agora?</h2>
+    <p>Estamos a um clique de distância. Atendimento rápido, profissional e com preço justo.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/5521995474007" class="btn btn-white"><i class="fab fa-whatsapp"></i> (99) 99547-4007</a>
+      <a href="tel:+5521995474007" class="btn btn-outline"><i class="fas fa-phone"></i> Ligar agora</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <div class="logo">
+          <div class="logo-mark">HC</div>
+          <div class="logo-text">Henrique <span>Chaves</span></div>
+        </div>
+        <p>Soluções completas em chaveiro com atendimento rápido e profissional. Sua segurança é nossa prioridade.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://wa.me/5521995474007" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="#servicos">Cópia de chaves</a></li>
+          <li><a href="#servicos">Abertura de carros</a></li>
+          <li><a href="#servicos">Conserto de fechaduras</a></li>
+          <li><a href="#servicos">Capas de chave</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#diferenciais">Diferenciais</a></li>
+          <li><a href="#processo">Como funciona</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <div class="contact-item"><i class="fas fa-phone"></i> (99) 99547-4007</div>
+        <div class="contact-item"><i class="fab fa-whatsapp"></i> (99) 99547-4007</div>
+        <div class="contact-item"><i class="fas fa-clock"></i> 24 horas por dia</div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Atendimento regional</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Henrique Chaves. Todos os direitos reservados. | CNPJ: XX.XXX.XXX/0001-XX
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5521995474007" class="wa-float" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY > 40) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  });
+
+  // Mobile menu
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click',()=>{
+    navLinks.classList.toggle('open');
+    const icon = menuToggle.querySelector('i');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-times');
+  });
+  navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    navLinks.classList.remove('open');
+    const icon = menuToggle.querySelector('i');
+    icon.classList.add('fa-bars');
+    icon.classList.remove('fa-times');
+  }));
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+  // Counter animation
+  const counters = document.querySelectorAll('[data-count]');
+  const counterObs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const el = e.target;
+        const target = +el.dataset.count;
+        const duration = 1800;
+        const start = performance.now();
+        const step = (now)=>{
+          const progress = Math.min((now-start)/duration,1);
+          const eased = 1 - Math.pow(1-progress,3);
+          el.textContent = Math.floor(eased*target).toLocaleString('pt-BR') + (target>=1000?'+':'+');
+          if(progress<1) requestAnimationFrame(step);
+          else el.textContent = target.toLocaleString('pt-BR') + '+';
+        };
+        requestAnimationFrame(step);
+        counterObs.unobserve(el);
+      }
+    });
+  },{threshold:.5});
+  counters.forEach(c=>counterObs.observe(c));
+</script>
+</body>
+</html>
+<!-- Cole o código gerado pelo Qwen aqui -->
